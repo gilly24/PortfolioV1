@@ -1,0 +1,39 @@
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Dark Theme Styling */
+body {
+  background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460);
+  color: #eaeaea;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+}
+
+a {
+  color: #00d9ff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffa41b;
+}
+
+button {
+  background: linear-gradient(90deg, #ff8008, #ffc837);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(255, 200, 55, 0.8);
+}
