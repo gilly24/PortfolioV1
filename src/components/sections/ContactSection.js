@@ -59,14 +59,18 @@ const ContactMeSection = ({ theme }) => {
           boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.2)",
         }}
       >
-        <input type="hidden" name="access_key" value="59392038-c743-4399-9bce-50102ea14208" />
-        <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+        {/* Hidden Fields */}
+        <input type="hidden" name="access_key" value={process.env.REACT_APP_WEB3FORMS_KEY} />
 
         {/* Name Field */}
         <div>
           <label
             htmlFor="name"
-            style={{ fontSize: "1.3rem", marginBottom: "0.5rem", display: "block" }}
+            style={{
+              fontSize: "1.3rem",
+              marginBottom: "0.5rem",
+              display: "block",
+            }}
           >
             Name
           </label>
@@ -92,7 +96,11 @@ const ContactMeSection = ({ theme }) => {
         <div>
           <label
             htmlFor="email"
-            style={{ fontSize: "1.3rem", marginBottom: "0.5rem", display: "block" }}
+            style={{
+              fontSize: "1.3rem",
+              marginBottom: "0.5rem",
+              display: "block",
+            }}
           >
             Email
           </label>
@@ -118,7 +126,11 @@ const ContactMeSection = ({ theme }) => {
         <div>
           <label
             htmlFor="message"
-            style={{ fontSize: "1.3rem", marginBottom: "0.5rem", display: "block" }}
+            style={{
+              fontSize: "1.3rem",
+              marginBottom: "0.5rem",
+              display: "block",
+            }}
           >
             Message
           </label>
@@ -155,12 +167,12 @@ const ContactMeSection = ({ theme }) => {
             transition: "background 0.3s, color 0.3s",
           }}
           onMouseEnter={(e) => {
-            e.target.style.transform = "scale(1.05)"; // Slightly enlarge
+            e.target.style.transform = "scale(1.05)";
             e.target.style.background = theme.highlightBackground;
             e.target.style.color = "#ffffff";
           }}
           onMouseLeave={(e) => {
-            e.target.style.transform = "scale(1)"; // Reset size
+            e.target.style.transform = "scale(1)";
             e.target.style.background = "transparent";
             e.target.style.color = theme.textColor;
           }}
