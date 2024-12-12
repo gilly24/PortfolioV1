@@ -234,18 +234,20 @@ const HeroSection = ({ theme, toggleTheme }) => {
             <p style={{ fontSize: "1.2rem" }}>If I win, I get the job.</p>
 
             {/* Basketball Highlights Video */}
-            <video
-              src="/assets/videos/highlights.mp4"
-              autoPlay
-              controls
-              loop
-              style={{
-                width: "100%",
-                borderRadius: "10px",
-                boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)",
-                marginBottom: "1.5rem", // Add space below video
-              }}
-            ></video>
+            <iframe
+            width="100%"
+            height="315"  // Adjust height as necessary
+            src="https://www.youtube.com/embed/R7LV7nvtCKA"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            style={{
+              borderRadius: "10px",
+              boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)",
+              marginBottom: "1.5rem"  // Add space below video
+            }}
+          ></iframe>
+
 
             {/* Close Button */}
             <button
