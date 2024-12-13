@@ -1,8 +1,11 @@
-import React, { useEffect, Suspense } from "react";
+
+import React, { useEffect, Suspense,useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Stars, Html } from "@react-three/drei";
 import * as THREE from "three";
 import "@fontsource/poppins";
+
+
 
 const EthereumModel = () => {
   const { scene } = useGLTF("/assets/ethereum_3d_logo1/scene.gltf");
@@ -28,6 +31,7 @@ const EthereumModel = () => {
 
   return <primitive object={scene} scale={0.003} position={[0, -0.1, 0]} />;
 };
+
 
 const FlickeringStars = ({ theme }) => (
   <Stars
@@ -113,6 +117,15 @@ const TypingAnimation = ({ theme }) => {
 
 const HeroSection = ({ theme, toggleTheme }) => {
   const [showChallenge, setShowChallenge] = React.useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    // Check for mobile user agent
+    const userAgent = navigator.userAgent;
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)) {
+      setIsMobile(true);
+    }
+  }, []);
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     section.scrollIntoView({ behavior: "smooth" });
@@ -120,6 +133,23 @@ const HeroSection = ({ theme, toggleTheme }) => {
 
   return (
     <div>
+      {isMobile && (
+        <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            backgroundColor: 'lightyellow',
+            textAlign: 'center',
+            padding: '10px',
+            fontSize: '16px',
+            zIndex: 1000,
+        }}>
+            For the best experience, please access this website on a desktop or laptop computer.
+        </div>
+      )}
+
+      
 {/* Navbar */}
 <nav
   id="navbar"
