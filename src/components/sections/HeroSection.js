@@ -133,17 +133,22 @@ const HeroSection = ({ theme, toggleTheme }) => {
 
   return (
     <div>
-      {isMobile && (
+ {isMobile && (
         <div style={{
             position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            backgroundColor: 'lightyellow',
-            textAlign: 'center',
-            padding: '10px',
+            top: '50%', // Center vertically
+            left: '50%', // Center horizontally
+            transform: 'translate(-50%, -50%)', // Adjust for exact centering
+            backgroundColor: theme.cardBackground || "#1a1a1a", // Use theme color
+            color: theme.textColor || "#ffffff", // Use theme text color
+            border: `1px solid ${theme.buttonText || "#3c82f6"}`, // Theme-based border
+            padding: '20px',
             fontSize: '16px',
             zIndex: 1000,
+            width: '80%', // Responsive width
+            textAlign: 'center',
+            borderRadius: '10px', // Soften the corners
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' // Subtle shadow for depth
         }}>
             For the best experience, please access this website on a desktop or laptop computer.
         </div>
