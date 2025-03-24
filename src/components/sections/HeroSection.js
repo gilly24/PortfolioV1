@@ -47,7 +47,7 @@ const FlickeringStars = ({ theme }) => (
 );
 
 const TypingAnimation = ({ theme }) => {
-  const phrases = ["Blockchain Software Engineer.", "Full-Stack Developer."];
+  const phrases = ["Full-Stack Developer."];
   const [currentText, setCurrentText] = React.useState("");
   const [isDeleting, setIsDeleting] = React.useState(false);
   const [currentIndex, setCurrentIndex] = React.useState(0);
