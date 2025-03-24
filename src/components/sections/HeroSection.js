@@ -261,7 +261,7 @@ const HeroSection = ({ theme, toggleTheme }) => {
                 fontWeight: "bold",
               }}
             >
-              So, you challenging me to a 1v1?
+               Verse me in a 1v1 for a job!
             </h2>
             <p style={{ fontSize: "1.2rem", marginBottom: ".5rem" }}>
               Bet you can't guard me in basketball! Look at the highlights.
