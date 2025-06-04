@@ -1,11 +1,8 @@
-
-import React, { useEffect, Suspense,useState } from "react";
+import React, { useEffect, Suspense, useState, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Stars, Html } from "@react-three/drei";
 import * as THREE from "three";
 import "@fontsource/poppins";
-
-
 
 const EthereumModel = () => {
   const { scene } = useGLTF("/assets/ethereum_3d_logo1/scene.gltf");
@@ -32,7 +29,6 @@ const EthereumModel = () => {
   return <primitive object={scene} scale={0.003} position={[0, -0.1, 0]} />;
 };
 
-
 const FlickeringStars = ({ theme }) => (
   <Stars
     radius={100}
@@ -47,7 +43,7 @@ const FlickeringStars = ({ theme }) => (
 );
 
 const TypingAnimation = ({ theme }) => {
-  const phrases = ["Full-Stack Developer."];
+  const phrases = useMemo(() => ["Full-Stack Developer."], []);
   const [currentText, setCurrentText] = React.useState("");
   const [isDeleting, setIsDeleting] = React.useState(false);
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -116,8 +112,9 @@ const TypingAnimation = ({ theme }) => {
 };
 
 const HeroSection = ({ theme, toggleTheme }) => {
-  const [showChallenge, setShowChallenge] = React.useState(false);
+  const [showChallenge, setShowChallenge] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     // Check for mobile user agent
     const userAgent = navigator.userAgent;
@@ -133,186 +130,94 @@ const HeroSection = ({ theme, toggleTheme }) => {
 
   return (
     <div>
- {isMobile && (
+      {isMobile && (
         <div style={{
-            position: 'fixed',
-            top: '50%', // Center vertically
-            left: '50%', // Center horizontally
-            transform: 'translate(-50%, -50%)', // Adjust for exact centering
-            backgroundColor: theme.cardBackground || "#1a1a1a", // Use theme color
-            color: theme.textColor || "#ffffff", // Use theme text color
-            border: `1px solid ${theme.buttonText || "#3c82f6"}`, // Theme-based border
-            padding: '20px',
-            fontSize: '16px',
-            zIndex: 1000,
-            width: '80%', // Responsive width
-            textAlign: 'center',
-            borderRadius: '10px', // Soften the corners
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' // Subtle shadow for depth
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          backgroundColor: theme.cardBackground || "#1a1a1a",
+          color: theme.textColor || "#ffffff",
+          border: `1px solid ${theme.buttonText || "#3c82f6"}`,
+          padding: '20px',
+          fontSize: '16px',
+          zIndex: 1000,
+          width: '80%',
+          textAlign: 'center',
+          borderRadius: '10px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
         }}>
-            For the best experience, please access this website on a desktop or laptop computer.
+          For the best experience, please access this website on a desktop or laptop computer.
         </div>
       )}
 
-      
-{/* Navbar */}
-<nav
-  id="navbar"
-  style={{
-    position: "fixed",
-    top: ".5rem",
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: "fit-content",
-    background: theme.cardBackground || "#1a1a1a",
-    borderRadius: "50px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "10px 20px",
-    boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)",
-    zIndex: 100,
-  }}
->
-  {/* Navigation Links */}
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: "1.5rem",
-      color: theme.textColor || "#ffffff",
-      fontFamily: "Poppins, sans-serif",
-      fontSize: "1rem",
-      fontWeight: "bold",
-    }}
-  >
-    {["About", "Skills", "Projects", "Contact"].map((section, index) => (
-      <button
-        key={index}
+      {/* Navbar */}
+      <nav
+        id="navbar"
         style={{
-          background: "transparent",
-          border: "none",
-          color: theme.textColor || "#ffffff",
-          cursor: "pointer",
-          transition: "color 0.3s ease",
-          fontSize: "1rem",
+          position: "fixed",
+          top: ".5rem",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "fit-content",
+          background: theme.cardBackground || "#1a1a1a",
+          borderRadius: "50px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "10px 20px",
+          boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)",
+          zIndex: 100,
         }}
-        onMouseEnter={(e) =>
-          (e.target.style.color = theme.buttonText || "#3c82f6")
-        }
-        onMouseLeave={(e) =>
-          (e.target.style.color = theme.textColor || "#ffffff")
-        }
-        onClick={() => scrollToSection(section.toLowerCase())}
       >
-        {section}
-      </button>
-    ))}
-
-    {/* Basketball Challenge Button */}
-    <button
-      style={{
-        background: "transparent",
-        border: "none",
-        color: theme.textColor || "#ffffff",
-        cursor: "pointer",
-        transition: "color 0.3s ease",
-        fontSize: "1rem",
-      }}
-      onMouseEnter={(e) =>
-        (e.target.style.color = theme.buttonText || "#3c82f6")
-      }
-      onMouseLeave={(e) =>
-        (e.target.style.color = theme.textColor || "#ffffff")
-      }
-      onClick={() => setShowChallenge(true)}
-    >
-      1v1 Challenge
-    </button>
-  </div>
-
-        {/* Basketball Challenge Modal */}
-        {showChallenge && (
-          <div
-            style={{
-              position: "fixed",
-              top: "675%",
-              left: "50%",
-              transform: "translate(-50%, -50%)", // Centers the modal
-              width: "90%",
-              maxWidth: "600px",
-              background: theme.cardBackground,
-              color: theme.textColor,
-              borderRadius: "15px",
-              padding: "2rem",
-              boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.5)",
-              zIndex: 1000,
-              textAlign: "center",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center", // Ensures content alignment
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "2rem",
-                marginBottom: "1rem",
-                fontWeight: "bold",
-              }}
-            >
-               Verse me in a 1v1 for a job!
-            </h2>
-            <p style={{ fontSize: "1.2rem", marginBottom: ".5rem" }}>
-              Bet you can't guard me in basketball! Look at the highlights.
-            </p>
-            <p style={{ fontSize: "1.2rem" }}>If I win, I get the job.</p>
-
-            {/* Basketball Highlights Video */}
-            <iframe
-            width="100%"
-            height="315"  // Adjust height as necessary
-            src="https://www.youtube.com/embed/R7LV7nvtCKA"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            style={{
-              borderRadius: "10px",
-              boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)",
-              marginBottom: "1.5rem"  // Add space below video
-            }}
-          ></iframe>
-
-
-            {/* Close Button */}
+        {/* Navigation Links */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "1.5rem",
+            color: theme.textColor || "#ffffff",
+            fontFamily: "Poppins, sans-serif",
+            fontSize: "1rem",
+            fontWeight: "bold",
+          }}
+        >
+          {["About", "Skills", "Projects", "Contact"].map((section, index) => (
             <button
+              key={index}
               style={{
-                marginTop: "1rem",
-                padding: "10px 20px",
-                fontSize: "1rem",
-                borderRadius: "8px",
-                border: `2px solid ${theme.buttonText}`,
                 background: "transparent",
-                color: theme.textColor,
+                border: "none",
+                color: theme.textColor || "#ffffff",
                 cursor: "pointer",
-                transition: "transform 0.3s, background-color 0.3s, color 0.3s",
+                transition: "color 0.3s ease",
+                fontSize: "1rem",
               }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = "scale(1.05)";
-                e.target.style.background = theme.highlightBackground;
-                e.target.style.color = "#ffffff";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = "scale(1)";
-                e.target.style.background = "transparent";
-                e.target.style.color = theme.textColor;
-              }}
-              onClick={() => setShowChallenge(false)}
+              onMouseEnter={(e) => (e.target.style.color = theme.buttonText || "#3c82f6")}
+              onMouseLeave={(e) => (e.target.style.color = theme.textColor || "#ffffff")}
+              onClick={() => scrollToSection(section.toLowerCase())}
             >
-              Close
+              {section}
             </button>
-          </div>
-        )}
+          ))}
+
+          {/* Basketball Challenge Button */}
+          <button
+            style={{
+              background: "transparent",
+              border: "none",
+              color: theme.textColor || "#ffffff",
+              cursor: "pointer",
+              transition: "color 0.3s ease",
+              fontSize: "1rem",
+            }}
+            onMouseEnter={(e) => (e.target.style.color = theme.buttonText || "#3c82f6")}
+            onMouseLeave={(e) => (e.target.style.color = theme.textColor || "#ffffff")}
+            onClick={() => setShowChallenge(true)}
+          >
+            1v1 Challenge
+          </button>
+        </div>
 
         {/* Theme Toggle Button */}
         <button
@@ -331,21 +236,18 @@ const HeroSection = ({ theme, toggleTheme }) => {
             transition: "transform 0.3s ease, background 0.3s ease",
           }}
           onMouseEnter={(e) => {
-            e.target.style.transform = "scale(1.05)"; // Slightly enlarge
+            e.target.style.transform = "scale(1.05)";
             e.target.style.background = theme.highlightBackground;
             e.target.style.color = "#ffffff";
           }}
           onMouseLeave={(e) => {
-            e.target.style.transform = "scale(1)"; // Reset size
+            e.target.style.transform = "scale(1)";
             e.target.style.background = "transparent";
             e.target.style.color = theme.textColor;
           }}
-          onClick={toggleTheme} // Toggle theme on click
+          onClick={toggleTheme}
         >
-          {/* Emoji changes based on theme */}
-          {theme.background === "linear-gradient(135deg, #0a0a0a, #141414)"
-            ? "☀️"
-            : "🌙"}
+          {theme.background === "linear-gradient(135deg, #0a0a0a, #141414)" ? "☀️" : "🌙"}
         </button>
       </nav>
 
@@ -358,8 +260,7 @@ const HeroSection = ({ theme, toggleTheme }) => {
           justifyContent: "center",
           alignItems: "center",
           position: "relative",
-          background:
-            theme.background || "linear-gradient(135deg, #0a0a0a, #141414)", // Fallback to black gradient
+          background: theme.background || "linear-gradient(135deg, #0a0a0a, #141414)",
           color: "#ffffff",
           transition: "background 0.5s, color 0.5s",
         }}
@@ -368,7 +269,7 @@ const HeroSection = ({ theme, toggleTheme }) => {
         <Canvas
           camera={{ position: [0, -0.3, 5], fov: 50 }}
           style={{
-            background: "transparent", // Ensure Canvas doesn't override background
+            background: "transparent",
             transition: "background 0.5s",
           }}
         >
@@ -412,38 +313,117 @@ const HeroSection = ({ theme, toggleTheme }) => {
             padding: "15px 30px",
             fontSize: "1.2rem",
             borderRadius: "8px",
-            border: `2px solid ${theme.buttonText || "#3c82f6"}`, // Border color
-            background: "transparent", // Transparent by default
-            color: theme.buttonText || "#3c82f6", // Text color
+            border: `2px solid ${theme.buttonText || "#3c82f6"}`,
+            background: "transparent",
+            color: theme.buttonText || "#3c82f6",
             cursor: "pointer",
             transition: "transform 1s, background 1s, color 1s",
           }}
           onMouseEnter={(e) => {
-            e.target.style.transform = "scale(1.05)"; // Slightly enlarge
-            e.target.style.background = theme.highlightBackground; // Reset to transparent
-            e.target.style.color = "#ffffff"; // Change text color to white
-            e.target.style.border = `2px solid ${
-              theme.buttonText || "#ffffff"
-            }`; // Restore border
+            e.target.style.transform = "scale(1.05)";
+            e.target.style.background = theme.highlightBackground;
+            e.target.style.color = "#ffffff";
+            e.target.style.border = `2px solid ${theme.buttonText || "#ffffff"}`;
           }}
           onMouseLeave={(e) => {
-            e.target.style.transform = "scale(1)"; // Reset size
-            e.target.style.background = "transparent"; // Reset to transparent
-            e.target.style.color = theme.buttonText || "#3c82f6"; // Reset text color
-            e.target.style.border = `2px solid ${
-              theme.buttonText || "#3c82f6"
-            }`; // Restore border
+            e.target.style.transform = "scale(1)";
+            e.target.style.background = "transparent";
+            e.target.style.color = theme.buttonText || "#3c82f6";
+            e.target.style.border = `2px solid ${theme.buttonText || "#3c82f6"}`;
           }}
           onMouseDown={(e) => {
-            e.target.style.transform = "scale(0.95)"; // Slightly shrink
+            e.target.style.transform = "scale(0.95)";
           }}
           onMouseUp={(e) => {
-            e.target.style.transform = "scale(1.05)"; // Slightly enlarge after click
+            e.target.style.transform = "scale(1.05)";
           }}
           onClick={() => scrollToSection("about")}
         >
           View My Work ↓
         </button>
+
+        {/* Basketball Challenge Modal */}
+        {showChallenge && (
+          <div
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "90%",
+              maxWidth: "600px",
+              background: theme.cardBackground,
+              color: theme.textColor,
+              borderRadius: "15px",
+              padding: "2rem",
+              boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.5)",
+              zIndex: 1000,
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "2rem",
+                marginBottom: "1rem",
+                fontWeight: "bold",
+              }}
+            >
+              Verse me in a 1v1 for a job!
+            </h2>
+            <p style={{ fontSize: "1.2rem", marginBottom: ".5rem" }}>
+              Bet you can't guard me in basketball! Look at the highlights.
+            </p>
+            <p style={{ fontSize: "1.2rem" }}>If I win, I get the job.</p>
+
+            {/* Basketball Highlights Video */}
+            <iframe
+              width="100%"
+              height="315"
+              src="https://www.youtube.com/embed/R7LV7nvtCKA"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Basketball Challenge Video"
+              style={{
+                borderRadius: "10px",
+                boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)",
+                marginBottom: "1.5rem",
+              }}
+            />
+
+            {/* Close Button */}
+            <button
+              style={{
+                marginTop: "1rem",
+                padding: "10px 20px",
+                fontSize: "1rem",
+                borderRadius: "8px",
+                border: `2px solid ${theme.buttonText}`,
+                background: "transparent",
+                color: theme.textColor,
+                cursor: "pointer",
+                transition: "transform 0.3s, background-color 0.3s, color 0.3s",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = "scale(1.05)";
+                e.target.style.background = theme.highlightBackground;
+                e.target.style.color = "#ffffff";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "scale(1)";
+                e.target.style.background = "transparent";
+                e.target.style.color = theme.textColor;
+              }}
+              onClick={() => setShowChallenge(false)}
+            >
+              Close
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
