@@ -77,10 +77,9 @@ const AboutSection = ({ theme }) => (
       transition={{ duration: 1.2, ease: "easeInOut" }}
       whileHover={{ scale: 1.1 }}
     >
-      {/* Replace G with Image */}
       <motion.img
-        src="assets/images/my-avatar.jpg" // Replace with the actual path to your image
-        alt="My Avatar"
+        src="assets/images/me.jpg"
+        alt="Gordon Milly"
         style={{
           width: "100%",
           height: "100%",
@@ -107,7 +106,7 @@ const AboutSection = ({ theme }) => (
       transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
     >
       Hello! My name is <strong style={{ color: "#3c82f6" }}>Gordon</strong>.
-      I'm a <strong>second-year Computer Science student</strong> at the University of Technology Sydney, 
+      I'm a <strong>Third-year Computer Science student</strong> at the University of Technology Sydney, 
       deeply passionate about <strong>decentralized finance (DeFi)</strong>, 
       <strong> blockchain technology</strong>, and <strong>full-stack development</strong>. 
       I'm always eager to grow as a <strong>software engineer</strong>, constantly exploring new technologies 
@@ -142,7 +141,7 @@ const AboutSection = ({ theme }) => (
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
     >
-      Currently, I’m exploring the intersection of technology and creativity,
+      Currently, I'm exploring the intersection of technology and creativity,
       focusing on delivering exceptional user experiences in my projects.
     </motion.p>
   </section>
