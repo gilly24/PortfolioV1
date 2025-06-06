@@ -38,6 +38,7 @@ const ContactMeSection = ({ theme }) => {
   const styles = {
     section: {
       minHeight: "100vh",
+      width: "100%",
       padding: window.innerWidth <= 768 ? "3rem 1rem" : "5rem 2rem",
       background: theme.cardBackground,
       color: theme.textColor,
@@ -48,6 +49,7 @@ const ContactMeSection = ({ theme }) => {
       textAlign: "center",
       transition: "background 0.5s, color 0.5s",
       position: "relative",
+      overflowX: "hidden",
     },
     title: {
       fontSize: window.innerWidth <= 768 ? "2.5rem" : "3.5rem",
@@ -60,11 +62,16 @@ const ContactMeSection = ({ theme }) => {
       flexDirection: "column",
       gap: "1.5rem",
       width: "100%",
-      maxWidth: window.innerWidth <= 768 ? "100%" : "500px",
+      maxWidth: "500px",
+      margin: "0 auto",
       padding: window.innerWidth <= 768 ? "1.5rem" : "2rem",
       background: "rgba(255, 255, 255, 0.05)",
       borderRadius: "10px",
       boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.2)",
+      overflow: "hidden",
+    },
+    inputContainer: {
+      width: "100%",
     },
     input: {
       width: "100%",
@@ -74,6 +81,8 @@ const ContactMeSection = ({ theme }) => {
       background: "rgba(255, 255, 255, 0.1)",
       color: theme.textColor,
       fontSize: window.innerWidth <= 768 ? "1rem" : "1.1rem",
+      boxSizing: "border-box",
+      resize: "vertical",
     },
     label: {
       fontSize: window.innerWidth <= 768 ? "1.1rem" : "1.3rem",
@@ -173,7 +182,7 @@ const ContactMeSection = ({ theme }) => {
         <input type="hidden" name="access_key" value="59392038-c743-4399-9bce-50102ea14208" />
 
         {/* Name Field */}
-        <div>
+        <div style={styles.inputContainer}>
           <label htmlFor="name" style={styles.label}>Name</label>
           <input
             type="text"
@@ -186,7 +195,7 @@ const ContactMeSection = ({ theme }) => {
         </div>
 
         {/* Email Field */}
-        <div>
+        <div style={styles.inputContainer}>
           <label htmlFor="email" style={styles.label}>Email</label>
           <input
             type="email"
@@ -199,7 +208,7 @@ const ContactMeSection = ({ theme }) => {
         </div>
 
         {/* Message Field */}
-        <div>
+        <div style={styles.inputContainer}>
           <label htmlFor="message" style={styles.label}>Message</label>
           <textarea
             id="message"
