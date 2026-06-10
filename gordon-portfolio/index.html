@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gordon Gill - Full-Stack Engineer & CS Student at UTS Sydney" />
+  <title>Gordon Gill - Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@300..700&family=Inter:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- GSAP (must load before main.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+  <!-- Lucide icons (must load before main.js) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Styles - ordered: tokens → base → shared → sections → layout -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/cursor.css">
+  <link rel="stylesheet" href="assets/css/nav.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/about.css">
+  <link rel="stylesheet" href="assets/css/projects.css">
+  <link rel="stylesheet" href="assets/css/skills.css">
+  <link rel="stylesheet" href="assets/css/experience.css">
+  <link rel="stylesheet" href="assets/css/contact.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Custom cursor (desktop only) -->
+  <div class="cursor-dot"  aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+
+      <!-- GM circuit monogram logo -->
+      <a href="#" class="nav-logo" aria-label="Gordon Gill - back to top">
+        <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 2h16v6H8v16h10v-6h-4v-4h10v14H2V2z"
+                fill="currentColor" style="color:var(--color-primary)"/>
+          <path d="M24 2h16v28H32V8h-4l-6 12h4l-2 4H20L28 2z"
+                fill="currentColor" style="color:var(--color-text)"/>
+          <path d="M2 1h36v1H2zM38 1v30h1V1z"
+                fill="currentColor" style="color:var(--color-border)" opacity="0.6"/>
+        </svg>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="nav-links">
+        <li><a href="#about"      data-section="about">About</a></li>
+        <li><a href="#projects"   data-section="projects">Projects</a></li>
+        <li><a href="#skills"     data-section="skills">Skills</a></li>
+        <li><a href="#experience" data-section="experience">Background</a></li>
+        <li><a href="#contact"    data-section="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+          <i data-lucide="sun"  width="16" height="16" id="themeIconLight" style="display:none"></i>
+          <i data-lucide="moon" width="16" height="16" id="themeIconDark"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile nav drawer -->
+  <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation">
+    <a href="#about"      class="mobile-nav-link">About</a>
+    <a href="#projects"   class="mobile-nav-link">Projects</a>
+    <a href="#skills"     class="mobile-nav-link">Skills</a>
+    <a href="#experience" class="mobile-nav-link">Background</a>
+    <a href="#contact"    class="mobile-nav-link">Contact</a>
+  </div>
+
+  <main id="main">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero" id="hero" aria-label="Introduction">
+      <canvas id="starfield" aria-hidden="true"></canvas>
+      <div class="hero-gradient" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <!-- Left: content -->
+        <div class="hero-content">
+          <span class="hero-label">&lt;&lt; SOFTWARE ENGINEER &gt;&gt;</span>
+          <h1 data-text="Gordon Gill">Gordon Gill</h1>
+          <p class="hero-subtitle">Building the future of web - one system at a time.</p>
+          <p class="hero-body">
+            Final-year Bachelor of Computing Science student at UTS, majoring in Enterprise System
+            Development. I build and ship full-stack products end-to-end - from database architecture
+            and API integrations to responsive frontends and live deployments.
+          </p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn-primary" aria-label="View my projects">
+              <i data-lucide="layers" width="16" height="16"></i>
+              View Projects
+            </a>
+            <a href="assets/Gordon_Gill_CV.pdf" download class="btn-ghost" aria-label="Download CV">
+              <i data-lucide="download" width="16" height="16"></i>
+              Download CV
+            </a>
+          </div>
+          <div class="tech-icons" aria-label="Primary tech stack">
+            <div class="tech-icon-item">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                   alt="TypeScript" loading="lazy">
+              <span>TypeScript</span>
+            </div>
+            <div class="tech-icon-item">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+                   alt="Next.js" loading="lazy" style="filter:invert(1) grayscale(0.3)">
+              <span>Next.js</span>
+            </div>
+            <div class="tech-icon-item">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                   alt="Python" loading="lazy">
+              <span>Python</span>
+            </div>
+            <div class="tech-icon-item">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                   alt="PostgreSQL" loading="lazy">
+              <span>PostgreSQL</span>
+            </div>
+            <div class="tech-icon-item">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg"
+                   alt="Vercel" loading="lazy" style="filter:invert(1) grayscale(0.3)">
+              <span>Vercel</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: floating terminal -->
+        <div class="hero-terminal" aria-hidden="true">
+          <div class="terminal-bar">
+            <span class="terminal-title">gordon@uts ~ /projects</span>
+          </div>
+          <div class="terminal-body" id="terminalBody"></div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span>SCROLL</span>
+        <i data-lucide="chevrons-down" width="16" height="16"></i>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT
+         ============================================================ -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="section-inner">
+        <span class="section-label reveal">// 01 ABOUT</span>
+        <div class="about-grid">
+
+          <div class="about-text reveal">
+            <h2 id="about-heading" class="section-heading">About Me</h2>
+            <p>I'm <strong>Gordon Gill</strong> - a final-year Bachelor of Computing Science (Honours)
+               student at the <strong>University of Technology Sydney</strong>, majoring in
+               Enterprise System Development.</p>
+            <p>I build and ship <strong>full-stack products end-to-end</strong> - from database
+               architecture and API integrations to responsive frontends and live deployments.
+               Proficient in TypeScript, Python, JavaScript, Rust, and SQL with hands-on experience
+               across Next.js, React, Node.js, Django, and PostgreSQL.</p>
+            <p>Currently developing a <strong>multi-tenant SaaS LMS platform</strong> while working
+               in IT support at Quantum Radiology, Bankstown. Passionate about building performant,
+               user-centric software that solves real problems.</p>
+            <p>Based in <strong>Sydney, NSW</strong> and open to grad roles, internships, and
+               freelance collaborations.</p>
+          </div>
+
+          <div class="stat-grid reveal">
+            <div class="stat-card">
+              <div class="stat-number" data-target="3" data-suffix="+">0</div>
+              <div class="stat-label">Years Coding</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-target="10" data-suffix="+">0</div>
+              <div class="stat-label">Projects Shipped</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-target="4" data-suffix="">0</div>
+              <div class="stat-label">Live Client Sites</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-target="5" data-suffix="+">0</div>
+              <div class="stat-label">Tech Stack Tools</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROJECTS
+         ============================================================ -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="section-inner">
+        <span class="section-label reveal">// 02 PROJECTS</span>
+        <h2 id="projects-heading" class="section-heading reveal">Things I've Built</h2>
+
+        <div class="filter-tabs" role="tablist" aria-label="Filter projects by category">
+          <button class="filter-tab active" data-filter="all"  role="tab" aria-selected="true">All</button>
+          <button class="filter-tab"        data-filter="web"  role="tab" aria-selected="false">Web Apps</button>
+          <button class="filter-tab"        data-filter="saas" role="tab" aria-selected="false">SaaS</button>
+        </div>
+
+        <div class="projects-bento">
+
+          <!-- Vynl Academy LMS - featured (2 cols) -->
+          <article class="project-card featured reveal" data-category="saas web"
+                   aria-label="Vynl Academy - LMS Platform">
+            <div class="project-card-header">
+              <h3 class="project-title">Vynl Academy - LMS Platform</h3>
+              <span class="status-badge status-dev">IN DEVELOPMENT</span>
+            </div>
+            <p class="project-desc">
+              Full online learning management system for gel-x nail education - course creation to
+              student management. Gated video content, course progress tracking, enrolment flows,
+              and Stripe one-time &amp; subscription-based course purchases.
+            </p>
+            <div class="project-stack">
+              <span class="tech-badge">Next.js</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">Stripe</span>
+              <span class="tech-badge">Vercel</span>
+            </div>
+            <div class="project-card-footer">
+              <a href="#" class="icon-btn" aria-label="View on GitHub" target="_blank" rel="noopener">
+                <i data-lucide="github" width="14" height="14"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Vynl -->
+          <article class="project-card reveal" data-category="web" aria-label="Vynl">
+            <div class="project-card-header">
+              <h3 class="project-title">Vynl</h3>
+              <span class="status-badge status-live">LIVE</span>
+            </div>
+            <p class="project-desc">
+              Production website for a nail and beauty brand - built and deployed from scratch.
+              Integrated with third-party booking and e-commerce APIs, with live payment and
+              scheduling workflows for real customer transactions.
+            </p>
+            <div class="project-stack">
+              <span class="tech-badge">Next.js</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">Tailwind CSS</span>
+              <span class="tech-badge">Vercel</span>
+            </div>
+            <div class="project-card-footer">
+              <a href="https://vynl.com.au" class="icon-btn" aria-label="View vynl.com.au" target="_blank" rel="noopener">
+                <i data-lucide="external-link" width="14" height="14"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- JC Junk Hauling -->
+          <article class="project-card reveal" data-category="web" aria-label="JC Junk Hauling">
+            <div class="project-card-header">
+              <h3 class="project-title">JC Junk Hauling</h3>
+              <span class="status-badge status-live">LIVE</span>
+            </div>
+            <p class="project-desc">
+              Client site for a junk removal business - responsive marketing site with lead capture,
+              contact forms, and third-party map/location API integration. Custom domain deployed via Vercel.
+            </p>
+            <div class="project-stack">
+              <span class="tech-badge">Next.js</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">Vercel</span>
+            </div>
+            <div class="project-card-footer">
+              <a href="https://jcjunkhauling.com" class="icon-btn" aria-label="View jcjunkhauling.com" target="_blank" rel="noopener">
+                <i data-lucide="external-link" width="14" height="14"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- LAB University Prep -->
+          <article class="project-card reveal" data-category="web" aria-label="LAB University Prep">
+            <div class="project-card-header">
+              <h3 class="project-title">LAB University Prep</h3>
+              <span class="status-badge status-live">LIVE</span>
+            </div>
+            <p class="project-desc">
+              Client website for a university preparation and tutoring service. Full Next.js site
+              with third-party email automation API, CMS integration for client-managed content,
+              and production CI/CD pipeline on Vercel.
+            </p>
+            <div class="project-stack">
+              <span class="tech-badge">Next.js</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">Vercel</span>
+            </div>
+            <div class="project-card-footer">
+              <a href="https://labuniversityprep.com" class="icon-btn" aria-label="View labuniversityprep.com" target="_blank" rel="noopener">
+                <i data-lucide="external-link" width="14" height="14"></i>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SKILLS
+         ============================================================ -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="section-inner">
+        <span class="section-label reveal">// 03 SKILLS</span>
+        <h2 id="skills-heading" class="section-heading reveal">Tech Arsenal</h2>
+
+        <div class="skills-grid">
+
+          <!-- Languages -->
+          <div class="skill-category reveal">
+            <div class="skill-cat-header">
+              <span class="skill-cat-title">Languages</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">TypeScript</span><span class="skill-pct">90%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.90"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">85%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">JavaScript</span><span class="skill-pct">88%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.88"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">SQL</span><span class="skill-pct">80%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Swift</span><span class="skill-pct">45%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.45"></div></div>
+            </div>
+          </div>
+
+          <!-- Frontend -->
+          <div class="skill-category reveal">
+            <div class="skill-cat-header">
+              <span class="skill-cat-title">Frontend</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Next.js</span><span class="skill-pct">92%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.92"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">React</span><span class="skill-pct">90%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.90"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Tailwind CSS</span><span class="skill-pct">88%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.88"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">HTML / CSS</span><span class="skill-pct">95%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.95"></div></div>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="skill-category reveal">
+            <div class="skill-cat-header">
+              <span class="skill-cat-title">Backend</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Node.js</span><span class="skill-pct">85%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">PostgreSQL</span><span class="skill-pct">82%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.82"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Neon DB</span><span class="skill-pct">80%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">REST APIs</span><span class="skill-pct">88%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.88"></div></div>
+            </div>
+          </div>
+
+          <!-- Cloud & DevOps -->
+          <div class="skill-category reveal">
+            <div class="skill-cat-header">
+              <span class="skill-cat-title">Cloud &amp; DevOps</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Vercel</span><span class="skill-pct">90%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.90"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Oracle Cloud</span><span class="skill-pct">70%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.70"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Cloudflare</span><span class="skill-pct">72%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.72"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">GitHub Actions</span><span class="skill-pct">75%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.75"></div></div>
+            </div>
+          </div>
+
+          <!-- Tools & Platforms -->
+          <div class="skill-category reveal">
+            <div class="skill-cat-header">
+              <span class="skill-cat-title">Tools &amp; Platforms</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Cursor AI</span><span class="skill-pct">95%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.95"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Docker</span><span class="skill-pct">68%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.68"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Stripe / Square</span><span class="skill-pct">80%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Discord API</span><span class="skill-pct">85%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.85"></div></div>
+            </div>
+          </div>
+
+          <!-- Currently Learning -->
+          <div class="skill-category learning reveal">
+            <div class="skill-cat-header">
+              <span class="skill-cat-title">Currently Learning</span>
+              <span class="loading-label">&gt;&gt; LOADING...</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">Machine Learning (PyTorch)</span><span class="skill-pct">30%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.30"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">iOS Dev (SwiftUI)</span><span class="skill-pct">25%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.25"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-row"><span class="skill-name">LLM Fine-tuning</span><span class="skill-pct">20%</span></div>
+              <div class="skill-track"><div class="skill-bar" data-pct="0.20"></div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EXPERIENCE / EDUCATION
+         ============================================================ -->
+    <section id="experience" aria-labelledby="exp-heading">
+      <div class="section-inner">
+        <span class="section-label reveal">// 04 BACKGROUND</span>
+        <h2 id="exp-heading" class="section-heading reveal">Experience &amp; Education</h2>
+
+        <div class="timeline" id="timeline">
+          <!-- SVG draw line -->
+          <div class="timeline-line-wrap" aria-hidden="true">
+            <svg class="timeline-line-svg" viewBox="0 0 2 600" preserveAspectRatio="none">
+              <line class="timeline-line-path" x1="1" y1="0" x2="1" y2="600"></line>
+            </svg>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2023 - EXPECTED 2027</div>
+            <h3 class="timeline-title">UTS - Bachelor of Computing Science (Honours)</h3>
+            <div class="timeline-sub">University of Technology Sydney &middot; Sydney, NSW</div>
+            <p class="timeline-desc">Major in Enterprise System Development. Studying advanced software
+               architecture, databases, algorithms, and full-stack web development. Also completed a
+               Diploma of Information Technology at UTS (May 2024).</p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">FEB 2024 - PRESENT</div>
+            <h3 class="timeline-title">Clerical &amp; IT Support</h3>
+            <div class="timeline-sub">Quantum Radiology &middot; Bankstown, NSW</div>
+            <p class="timeline-desc">Database management, network infrastructure, and server operations.
+               Bug testing on Karisma (Kestral RIS), Level 1 IT support, and patient data management.
+               Streamlined scheduling through electronic health record systems.</p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">OCT 2022 - SEP 2023</div>
+            <h3 class="timeline-title">Level 1 IT Field Technician</h3>
+            <div class="timeline-sub">Eastern Suburbs Private Hospital &middot; Sydney, NSW</div>
+            <p class="timeline-desc">Delivered technical support across computer systems, hardware, and
+               software. Executed software installations, configurations, and maintenance. Resolved
+               technical issues via phone, email, and on-site visits.</p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2023 - PRESENT</div>
+            <h3 class="timeline-title">Freelance Full-Stack Developer</h3>
+            <div class="timeline-sub">Self-employed &middot; Remote</div>
+            <p class="timeline-desc">Building production websites and SaaS products for real clients.
+               Live projects include vynl.com.au, labuniversityprep.com, and jcjunkhauling.com.
+               End-to-end delivery: architecture, API integrations, deployments on Vercel.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT
+         ============================================================ -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="section-inner">
+        <span class="section-label reveal">// 05 CONTACT</span>
+        <h2 id="contact-heading" class="section-heading reveal">Let's Build Something</h2>
+        <p class="section-desc reveal">Open to grad roles, internships, and freelance projects.
+           Based in Sydney, NSW - phone 0416 681 980.</p>
+
+        <div class="contact-grid">
+
+          <!-- Form -->
+          <div class="reveal">
+            <form id="contactForm" novalidate>
+              <div class="form-group">
+                <label class="form-label" for="contactName">NAME</label>
+                <input class="form-input" type="text" id="contactName" name="name"
+                       placeholder="Your name" autocomplete="name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contactEmail">EMAIL</label>
+                <input class="form-input" type="email" id="contactEmail" name="email"
+                       placeholder="your@email.com" autocomplete="email" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contactMessage">MESSAGE</label>
+                <textarea class="form-textarea" id="contactMessage" name="message"
+                          placeholder="Tell me about your project..." required></textarea>
+              </div>
+              <button type="submit" class="btn-primary submit-btn" id="submitBtn" aria-label="Send message">
+                <span class="btn-text">
+                  <i data-lucide="send" width="16" height="16"
+                     style="display:inline-block;vertical-align:middle;margin-right:6px;"></i>
+                  Send Message
+                </span>
+                <span class="btn-spinner"></span>
+                <span class="btn-check">
+                  <i data-lucide="check" width="16" height="16"></i>
+                  Message Sent!
+                </span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact info -->
+          <div class="contact-info reveal">
+            <a href="mailto:gordongill24@gmail.com" class="contact-card" aria-label="Send an email">
+              <div class="contact-card-icon"><i data-lucide="mail" width="20" height="20"></i></div>
+              <div>
+                <div class="contact-card-label">EMAIL</div>
+                <div class="contact-card-value">gordongill24@gmail.com</div>
+              </div>
+            </a>
+            <div class="contact-card">
+              <div class="contact-card-icon"><i data-lucide="map-pin" width="20" height="20"></i></div>
+              <div>
+                <div class="contact-card-label">LOCATION</div>
+                <div class="contact-card-value">Sydney, NSW, Australia</div>
+              </div>
+            </div>
+            <a href="https://github.com/gilly24" class="contact-card" target="_blank" rel="noopener"
+               aria-label="GitHub profile">
+              <div class="contact-card-icon"><i data-lucide="github" width="20" height="20"></i></div>
+              <div>
+                <div class="contact-card-label">GITHUB</div>
+                <div class="contact-card-value">github.com/gilly24</div>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/gordongill/" class="contact-card" target="_blank" rel="noopener"
+               aria-label="LinkedIn profile">
+              <div class="contact-card-icon"><i data-lucide="linkedin" width="20" height="20"></i></div>
+              <div>
+                <div class="contact-card-label">LINKEDIN</div>
+                <div class="contact-card-value">linkedin.com/in/gordongill</div>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <a href="#" aria-label="Back to top">
+        <svg width="32" height="26" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 2h16v6H8v16h10v-6h-4v-4h10v14H2V2z"
+                fill="currentColor" style="color:var(--color-primary)"/>
+          <path d="M24 2h16v28H32V8h-4l-6 12h4l-2 4H20L28 2z"
+                fill="currentColor" style="color:var(--color-text-faint)"/>
+        </svg>
+      </a>
+      <p class="footer-copy">Built by Gordon Gill - UTS Computing Science 2027</p>
+      <div class="footer-icons">
+        <a href="https://github.com/gilly24"                 target="_blank" rel="noopener" aria-label="GitHub">
+          <i data-lucide="github"    width="18" height="18"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/gordongill/"    target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i data-lucide="linkedin"  width="18" height="18"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ES module entry point -->
+  <script type="module" src="assets/js/main.js"></script>
+
+</body>
+</html>

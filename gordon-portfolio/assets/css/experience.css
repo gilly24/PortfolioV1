@@ -1,0 +1,66 @@
+/* =============================================
+   EXPERIENCE / EDUCATION — TIMELINE
+   ============================================= */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline-line-wrap {
+  position: absolute;
+  left: 11px;
+  top: 0; bottom: 0;
+  width: 2px;
+}
+.timeline-line-svg {
+  width: 2px;
+  height: 100%;
+}
+.timeline-line-path {
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-12);
+}
+.timeline-item:last-child { margin-bottom: 0; }
+
+.timeline-dot {
+  position: absolute;
+  left: -33px; top: 6px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 0 12px var(--color-primary);
+}
+
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+}
+.timeline-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+}
+.timeline-sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+.timeline-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
