@@ -11,8 +11,8 @@ export function initStarfield() {
   let stars  = [];
 
   function resize() {
-    canvas.width  = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
   }
 
   function createStars() {
