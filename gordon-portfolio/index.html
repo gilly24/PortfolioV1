@@ -542,6 +542,12 @@
                 <textarea class="form-textarea" id="contactMessage" name="message"
                           placeholder="Tell me about your project..." required></textarea>
               </div>
+              <!-- Honeypot: hidden from people, bots fill it in -->
+              <div class="form-hp" aria-hidden="true">
+                <label for="contactWebsite">Website</label>
+                <input type="text" id="contactWebsite" name="website" tabindex="-1" autocomplete="off">
+              </div>
+              <div id="turnstileWidget" class="turnstile-widget"></div>
               <button type="submit" class="btn-primary submit-btn" id="submitBtn" aria-label="Send message">
                 <span class="btn-text">
                   <i data-lucide="send" width="16" height="16"
@@ -554,6 +560,7 @@
                   Message Sent!
                 </span>
               </button>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
             </form>
           </div>
 
