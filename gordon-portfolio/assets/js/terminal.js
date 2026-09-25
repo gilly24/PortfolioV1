@@ -6,7 +6,7 @@
 
 const LINES = [
   { type: 'prompt',  text: 'ls projects/' },
-  { type: 'output',  text: 'inventory-monitor/   vynl-academy/' },
+  { type: 'output',  text: 'inventory-monitor/   vynl/' },
   { type: 'output',  text: 'booking-system/      lab-prep/' },
   { type: 'comment', text: '6 projects, all shipping' },
   { type: 'prompt',  text: 'git status' },
