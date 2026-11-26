@@ -329,8 +329,16 @@
           <article class="project-card in-progress reveal" data-category="web" aria-label="CT Reading Room">
             <div class="project-card-header">
               <h3 class="project-title">CT Reading Room</h3>
-              <span class="status-badge status-dev">IN PROGRESS<span class="progress-dots" aria-hidden="true"></span></span>
+              <span class="status-badge status-dev">TRAINING AI<span class="progress-dots" aria-hidden="true"></span></span>
             </div>
+            <!-- Stages: update the done/current classes as the project moves on -->
+            <ol class="stage-track" aria-label="Project stages">
+              <li class="done">UI</li>
+              <li class="current" aria-current="step">Train AI</li>
+              <li>Report</li>
+              <li>Study</li>
+              <li>Launch</li>
+            </ol>
             <p class="project-desc">
               Personal project to learn how AI fits into radiology. A browser DICOM viewer for
               real abdominal CT scans: measure kidney tumours, get scored against the

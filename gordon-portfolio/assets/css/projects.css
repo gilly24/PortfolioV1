@@ -120,3 +120,40 @@
   from { transform: translateX(-100%); }
   to   { transform: translateX(250%); }
 }
+
+/* Stage tracker for in-progress projects */
+.stage-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-1);
+}
+.stage-track li {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.stage-track li::before {
+  content: '';
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  margin-bottom: var(--space-1);
+  background: var(--color-border);
+}
+.stage-track li.done { color: var(--color-text-muted); }
+.stage-track li.done::before { background: var(--color-primary); }
+.stage-track li.current { color: #fbbf24; }
+.stage-track li.current::before {
+  background: #fbbf24;
+  box-shadow: 0 0 6px #fbbf24;
+  animation: pulse 1.5s ease-in-out infinite;
+}
