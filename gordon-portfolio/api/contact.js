@@ -3,7 +3,7 @@
  * Vercel serverless function for the contact form.
  *
  *   GET  → returns the public Turnstile site key for the widget
- *   POST → honeypot check → Turnstile verification → email via Resend
+ *   POST → honeypot + time trap → Turnstile verification → email via Resend
  *
  * Environment variables (Vercel → Project → Settings → Environment Variables):
  *   RESEND_API_KEY        required
@@ -20,6 +20,7 @@ const DEFAULT_TO   = 'gordongill24@gmail.com';
 const DEFAULT_FROM = 'Portfolio Contact <onboarding@resend.dev>';
 
 const LIMITS = { name: 100, email: 254, message: 5000 };
+const MIN_FILL_MS = 3000;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 module.exports = async function handler(req, res) {
@@ -42,6 +43,10 @@ module.exports = async function handler(req, res) {
 
   // Honeypot: real visitors never see this field. Pretend it worked so bots move on.
   if (body.website) return res.status(200).json({ ok: true });
+
+  // Time trap: people take more than a few seconds to write a message; scripts don't.
+  const elapsedMs = Number(body.elapsedMs);
+  if (!Number.isFinite(elapsedMs) || elapsedMs < MIN_FILL_MS) return res.status(200).json({ ok: true });
 
   const name    = clean(body.name);
   const email   = clean(body.email);

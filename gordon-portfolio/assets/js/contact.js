@@ -2,7 +2,7 @@
  * contact.js
  * Sends the contact form to /api/contact with a
  * loading spinner → green checkmark success animation.
- * Bot protection: Cloudflare Turnstile widget + hidden honeypot field.
+ * Bot protection: Cloudflare Turnstile widget, hidden honeypot field and a time trap.
  */
 const TURNSTILE_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
 
@@ -12,6 +12,9 @@ export function initContact() {
   const status    = document.getElementById('formStatus');
   const widgetEl  = document.getElementById('turnstileWidget');
   if (!form || !submitBtn) return;
+
+  // Time trap: the server ignores messages sent within seconds of the page loading
+  const openedAt = Date.now();
 
   let widgetId = null;
   const turnstileReady = initTurnstile(widgetEl).then(id => { widgetId = id; });
@@ -50,6 +53,7 @@ export function initContact() {
           email:   data.email,
           message: data.message,
           website: data.website,
+          elapsedMs: Date.now() - openedAt,
           token,
         }),
       });
