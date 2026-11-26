@@ -101,3 +101,22 @@
   gap: var(--space-2);
   margin-top: auto;
 }
+
+/* In-progress project: animated build bar along the top edge */
+.project-card.in-progress {
+  position: relative;
+  overflow: hidden;
+}
+.project-card.in-progress::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+  animation: progress-sweep 2.4s ease-in-out infinite;
+}
+@keyframes progress-sweep {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(250%); }
+}

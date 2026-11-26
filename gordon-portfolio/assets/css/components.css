@@ -92,6 +92,23 @@
   flex-shrink: 0;
 }
 
+/* Animated "..." after IN PROGRESS */
+.progress-dots {
+  display: inline-block;
+  width: 3ch;
+  text-align: left;
+}
+.progress-dots::after {
+  content: '';
+  animation: progress-dots 1.5s steps(1, end) infinite;
+}
+@keyframes progress-dots {
+  0%   { content: ''; }
+  25%  { content: '.'; }
+  50%  { content: '..'; }
+  75%  { content: '...'; }
+}
+
 .status-personal { color: var(--color-text-muted); }
 .status-personal::before {
   content: '';
